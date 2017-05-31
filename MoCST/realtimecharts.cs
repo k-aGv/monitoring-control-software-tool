@@ -183,8 +183,8 @@ namespace Elaiotriveio
     
         private void realtimecharts_Load(object sender, EventArgs e)
         {
-            //to interval tou logger kathorizetai apo ti main Form
-            //mesw tou trackbar
+            //Logger's interval can be regulated from main Form
+            //through the trackbar
 
             
 
@@ -194,8 +194,8 @@ namespace Elaiotriveio
             z = zedGraphControl1.GraphPane;
             z.XAxis.Scale.MinorStep = 1;
             
-            z.XAxis.Scale.Max = 20; //euros timwn ston X
-            //z.YAxis.Scale.Max = 100; //euros timwn ston Y
+            z.XAxis.Scale.Max = 20; //values range on X axis
+            //z.YAxis.Scale.Max = 100; //values range on Y axis
             z.YAxis.Scale.MaxAuto = true;
             z.YAxis.Scale.MinAuto = true;
             

@@ -80,12 +80,7 @@ namespace Elaiotriveio
         public bool running = false;
         bool monitor_started = false;
         bool started;
-        //unused toDegC conversion function / values are received pre-converted
-        /*
-        public void toDegC(string[] _tempValues)
-        {
-            values_generator(_tempValues);
-        }*/
+        
         public string time_format()
         {
             if (DateTime.Now.Hour < 10)
@@ -178,7 +173,7 @@ namespace Elaiotriveio
         }
         public void Start()
         {
-            if (selectedPort != "")//&& selectedPort != "-------")
+            if (selectedPort != "")//&& selectedPort != "-------") //reversed IF for demo purposes - bypass COM selection
             {
                 started = false;
                 //<saves checkboxes status>
@@ -481,7 +476,6 @@ namespace Elaiotriveio
 
             if (arduino_sampler.Enabled && !excp)
             {
-                //toDegC(_tempValues);
                 values_generator(_tempValues);
             }
 

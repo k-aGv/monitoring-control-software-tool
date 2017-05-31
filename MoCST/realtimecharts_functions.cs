@@ -45,8 +45,7 @@ namespace Elaiotriveio
         bool init_Curves = true;
         bool scrolltrack;
         bool scroll_handler = true;
-        //4 gia 4 sensors
-        //1 tha ginetai kathe fora resize
+        
         double[,] varsX = new double[1, 4];
         double[,] varsY = new double[1, 4];
         int[] countX = new int[4];
