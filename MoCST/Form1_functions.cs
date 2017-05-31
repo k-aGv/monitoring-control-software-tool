@@ -134,7 +134,6 @@ namespace Elaiotriveio
             triggerLeds();
 
 
-
             enableToolStripMenuItem.Enabled = true;
             enableToolStripMenuItem1.Enabled = true;
             disableToolStripMenuItem.Enabled = true;
