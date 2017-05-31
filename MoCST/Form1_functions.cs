@@ -797,15 +797,12 @@ namespace Elaiotriveio
 
             }
         }
-        public void xmlcommentsParser(string filename)
-        {
+        public void xmlcommentsParser(string filename) {
             i = 0;
 
             XmlReader comments_reader = XmlReader.Create(filename); //stream for comments
-            while (comments_reader.Read())
-            {
-                switch (comments_reader.NodeType)
-                {
+            while (comments_reader.Read()) {
+                switch (comments_reader.NodeType) {
                     case XmlNodeType.Comment:
                         comments[i] = comments_reader.Value.ToString();
                         i++;
@@ -832,7 +829,17 @@ namespace Elaiotriveio
 
             if (fileOpened)
             {
-                xmlcommentsParser(filename); //pulling comments from XML
+                try {
+                    xmlcommentsParser(filename);
+                } catch (Exception z) {
+                    MessageBox.Show
+                        (
+                        "An error has occured while parsing the chosen file. A possible file corruption may cause this error.\nPlease try again.",
+                        "Conversion failed"
+                        );
+                    return;
+                }
+
                 int _1stparse = 0;
                 char[] del = { '/', ':' };
                 string[] sensors = comments[3].Split(del, 8);
@@ -897,7 +904,17 @@ namespace Elaiotriveio
 
             if (fileOpened)
             {
-                xmlcommentsParser(filename);
+                try {
+                    xmlcommentsParser(filename);
+                } 
+                catch (Exception z) {
+                    MessageBox.Show
+                        (
+                        "An error has occured while parsing the chosen file. A possible file corruption may cause this error.\nPlease try again.", 
+                        "Conversion failed"
+                        );
+                    return;
+                }
                 int columnIndex = 1;
                 int rawIndex = 1;
 
