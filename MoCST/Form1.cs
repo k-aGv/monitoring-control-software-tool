@@ -453,5 +453,12 @@ namespace Elaiotriveio
             ConvertToTxt();
         }
 
+        private void cb_demo_CheckedChanged(object sender, EventArgs e) {
+            if (cb_demo.Checked)
+                settingsToolStripMenuItem.Enabled = false;
+            else
+                settingsToolStripMenuItem.Enabled = true;
+        }
+
     }
 }

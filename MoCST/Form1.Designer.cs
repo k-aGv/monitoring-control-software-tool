@@ -98,6 +98,7 @@ namespace Elaiotriveio
             this.lbSampling = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.cb_demo = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.startminute)).BeginInit();
@@ -128,6 +129,7 @@ namespace Elaiotriveio
             this.portToolStripMenuItem,
             this.aToolStripMenuItem,
             this.bToolStripMenuItem});
+            this.settingsToolStripMenuItem.Enabled = false;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -135,7 +137,7 @@ namespace Elaiotriveio
             // portToolStripMenuItem
             // 
             this.portToolStripMenuItem.Name = "portToolStripMenuItem";
-            this.portToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.portToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.portToolStripMenuItem.Text = "Port";
             this.portToolStripMenuItem.Click += new System.EventHandler(this.portToolStripMenuItem_Click);
             // 
@@ -145,7 +147,7 @@ namespace Elaiotriveio
             this.enableToolStripMenuItem,
             this.disableToolStripMenuItem});
             this.aToolStripMenuItem.Name = "aToolStripMenuItem";
-            this.aToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.aToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aToolStripMenuItem.Text = "DTR";
             // 
             // enableToolStripMenuItem
@@ -168,7 +170,7 @@ namespace Elaiotriveio
             this.enableToolStripMenuItem1,
             this.disableToolStripMenuItem1});
             this.bToolStripMenuItem.Name = "bToolStripMenuItem";
-            this.bToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.bToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bToolStripMenuItem.Text = "RTS";
             // 
             // enableToolStripMenuItem1
@@ -347,7 +349,7 @@ namespace Elaiotriveio
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(145, 30);
+            this.start.Location = new System.Drawing.Point(146, 51);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(64, 23);
             this.start.TabIndex = 9;
@@ -562,7 +564,7 @@ namespace Elaiotriveio
             // Stop
             // 
             this.Stop.Enabled = false;
-            this.Stop.Location = new System.Drawing.Point(145, 60);
+            this.Stop.Location = new System.Drawing.Point(146, 81);
             this.Stop.Name = "Stop";
             this.Stop.Size = new System.Drawing.Size(64, 23);
             this.Stop.TabIndex = 37;
@@ -583,7 +585,7 @@ namespace Elaiotriveio
             // save
             // 
             this.save.Enabled = false;
-            this.save.Location = new System.Drawing.Point(146, 89);
+            this.save.Location = new System.Drawing.Point(147, 110);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(63, 53);
             this.save.TabIndex = 39;
@@ -708,11 +710,25 @@ namespace Elaiotriveio
             this.trackBar1.Value = 1;
             this.trackBar1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.trackBar1_MouseMove);
             // 
+            // cb_demo
+            // 
+            this.cb_demo.AutoSize = true;
+            this.cb_demo.Checked = true;
+            this.cb_demo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_demo.Location = new System.Drawing.Point(146, 28);
+            this.cb_demo.Name = "cb_demo";
+            this.cb_demo.Size = new System.Drawing.Size(54, 17);
+            this.cb_demo.TabIndex = 43;
+            this.cb_demo.Text = "Demo";
+            this.cb_demo.UseVisualStyleBackColor = true;
+            this.cb_demo.CheckedChanged += new System.EventHandler(this.cb_demo_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 301);
+            this.Controls.Add(this.cb_demo);
             this.Controls.Add(this.gpControls);
             this.Controls.Add(this.save);
             this.Controls.Add(this.Stop);
@@ -823,6 +839,7 @@ namespace Elaiotriveio
         private System.Windows.Forms.ToolStripMenuItem excelCompatibilityToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem convertXmlFileToTxtToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem convertXmlFileToXlsToolStripMenuItem;
+        private System.Windows.Forms.CheckBox cb_demo;
     }
 }
 

@@ -168,11 +168,11 @@ namespace Elaiotriveio
             if (arduino_sampler.Enabled)
                 arduino_sampler.Stop();
 
-
+            cb_demo.Enabled = true;
         }
         public void Start()
         {
-            if (selectedPort != "")//&& selectedPort != "-------") //reversed IF for demo purposes - bypass COM selection
+            if (selectedPort != "" || cb_demo.Checked)
             {
                 started = false;
                 //<saves checkboxes status>
@@ -254,30 +254,32 @@ namespace Elaiotriveio
 
                         //<serial handling>
                         excp = false;
-                        try
-                        {
-                            //receiver.Open();
-                            //receiver.ReadLine();
-                            input = Convert.ToString(rnd.Next(10, 35)) + "n"
-                                    + Convert.ToString(rnd.Next(10, 35)) + "n"
-                                    + Convert.ToString(rnd.Next(10, 35)) + "n"
-                                    + Convert.ToString(rnd.Next(10, 35));
+                        try {
+                            if (!cb_demo.Checked) {
+                                receiver.Open();
+                                receiver.ReadLine();
+                            } else
+                                input = Convert.ToString(rnd.Next(10, 35)) + "n"
+                                        + Convert.ToString(rnd.Next(10, 35)) + "n"
+                                        + Convert.ToString(rnd.Next(10, 35)) + "n"
+                                        + Convert.ToString(rnd.Next(10, 35));
                             InitCurveValues();
 
                             counter = 0;
                             logger.Start();
                             arduino_sampler.Start();
-                        }
-                        catch (System.IO.IOException)
-                        {
+
+
+
+                        } catch (System.IO.IOException) {
                             MessageBox.Show("Μη διαθέσιμη θύρα COM.", "COM error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             excp = true;
-                        }
-                        catch (System.ArgumentException)
-                        {
+                        } catch (System.ArgumentException) {
                             receiver.PortName = "";
                             MessageBox.Show("Μη έγκυρο όνομα θύρας", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             excp = true;
+                        } catch (Exception ex) {
+                            MessageBox.Show(ex + "");
                         }
                         //<serial handling>
                     }
@@ -307,8 +309,8 @@ namespace Elaiotriveio
                         save.Enabled = true;
 
 
-
-                        receiver.Close();
+                        if(!cb_demo.Checked)
+                            receiver.Close();
                         input = null;
                     }
                 }
@@ -320,7 +322,9 @@ namespace Elaiotriveio
             else
             {
                 MessageBox.Show("Please select the desired COM port from Settings menu");
+                return;
             }
+            cb_demo.Enabled = false;
         }
         public void time_check()
         {
@@ -444,16 +448,15 @@ namespace Elaiotriveio
         }
         public void receiveData()
         {
-            try
-            {
-                //input = receiver.ReadLine();
-                input = Convert.ToString(rnd.Next(10, 60)) + "n"
-                    + Convert.ToString(rnd.Next(10, 60)) + "n"
-                    + Convert.ToString(rnd.Next(10, 60)) + "n"
-                    + Convert.ToString(rnd.Next(10, 60));
-            }
-            catch (System.InvalidOperationException)
-            {
+            try {
+                if (!cb_demo.Checked)
+                    input = receiver.ReadLine();
+                else
+                    input = Convert.ToString(rnd.Next(10, 60)) + "n"
+                        + Convert.ToString(rnd.Next(10, 60)) + "n"
+                        + Convert.ToString(rnd.Next(10, 60)) + "n"
+                        + Convert.ToString(rnd.Next(10, 60));
+            } catch (System.InvalidOperationException) {
                 arduino_sampler.Stop();
                 MessageBox.Show("Η επιλεγμένη θύρα παρουσίασε σφάλμα. Πατήστε Stop για νέα δοκιμή.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
